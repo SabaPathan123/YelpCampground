@@ -137,6 +137,7 @@ app.use((req,res,next) =>{
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
+    //res.locals.status = 500;
     next();
 })
 
@@ -154,7 +155,9 @@ app.use('*',(req,res,next)=>{
 });
 
 app.use((err,req,res,next)=>{
-    const {status,message} = err;
+    const status = err.status || 500;
+    
+    const {message} = err.message;
     res.status(status);
     res.render('error',{err});
 });

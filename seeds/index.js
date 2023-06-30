@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 main().catch(err => console.log(err));
 async function main() {
-  await mongoose.connect('mongodb://localhost:27017/yelp-camp',
+  await mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp',
   { useNewUrlParser: true, 
     useUnifiedTopology : true});
 }
@@ -19,12 +19,12 @@ const seedDb = async () =>{
         const random1000 = Math.floor(Math.random()*1000);
         const price = Math.floor(Math.random()*30)+1;
         const c = new Campground({title : `${Sample(descriptors)}, ${Sample(places)}`,
-        author : '631e003795121f1a2d5af052',
+        author : '6499a5495702bbbf41bdab2e',
         location : `${cities[random1000].city},${cities[random1000].state}`,
         geometry :  { type: 'Point',
          coordinates: [ cities[random1000].longitude, cities[random1000].latitude ] },
         //image : 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-        description : 'Lorem ipsum kdjksjvaksjvashjkdsJKDSCJKSDNCJdsnCJxznCJzxNCJDZNC',
+        description : 'Beautiful & serene',
         price,
         images : [ {
             url: 'https://res.cloudinary.com/dscpidvbv/image/upload/v1663687725/YelpCamp/z6o01zwgvrumykgako9s.jpg',
